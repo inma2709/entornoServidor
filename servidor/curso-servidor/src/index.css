@@ -1,0 +1,17 @@
+@import "tailwindcss";   /* 👈 sin esto, no carga Tailwind */
+
+/* Paleta con @theme (v4) */
+@theme {
+  --color-primary:  #4059DC; /* azul intenso  */
+  --color-secondary:#6B9AC4; /* azul suave    */
+  --color-accent:   #97D8C4; /* verde agua    */
+  --color-light:    #EFF2F1; /* gris claro    */
+  --color-warning:  #F4B942; /* amarillo miel */
+  --font-sans: "Poppins", system-ui, sans-serif;
+}
+
+/* Accesibilidad mínima */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
