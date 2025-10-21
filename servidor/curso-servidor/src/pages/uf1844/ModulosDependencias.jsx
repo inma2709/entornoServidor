@@ -33,85 +33,101 @@ export default function ModulosDependencias() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          {/* MÓDULO DE CÓDIGO */}
-          <div className="bg-white p-4 rounded-xl shadow">
-            <h4 className="font-semibold mb-2">📄 Archivo: `utilidades.js`</h4>
-            <pre className="overflow-x-auto text-sm"><code>{`// utilidades.js
-// FUNCIÓN A EXPORTAR
-function sumar(a, b) {
+        {/* SECCIÓN: TIPOS DE MÓDULOS */}
+<div className="mt-4 bg-accent/10 p-4 rounded-xl border border-accent/20">
+  <h4 className="font-semibold text-accent">Tipos de módulos en Node.js</h4>
+  <ul className="list-disc pl-5 text-secondary/90 space-y-1 mt-2">
+    <li>
+      <strong>Nativos (built-in)</strong>: Módulos que vienen integrados con Node.js y no requieren instalación.  
+      Ejemplo moderno: <code>import fs from 'node:fs';</code> o <code>import http from 'node:http';</code>.
+    </li>
+    <li>
+      <strong>Locales (propios)</strong>: Archivos que tú mismo creas dentro del proyecto y se importan con una ruta relativa.  
+      
+    </li>
+    <li>
+      <strong>De terceros (dependencias)</strong>: Módulos instalados con <code>npm</code> y disponibles en la carpeta <code>node_modules</code>.  
+      Ejemplo: <code>import express from 'express';</code>.
+    </li>
+  </ul>
+
+  <p className="text-sm text-secondary/70 mt-3">
+    🔹 Para usar esta sintaxis moderna (<code>import/export</code>), recuerda añadir en tu <code>package.json si no lo tienes crealo siempre en la raiz del proyecto</code>:
+  </p>
+
+  <pre className="bg-white/60 text-sm rounded-lg p-2 mt-2 overflow-x-auto"><code>{`{
+  "type": "module"
+}`}</code></pre>
+
+  <p className="text-sm text-secondary/70 mt-2">
+    Si prefieres la sintaxis clásica (<code>require</code> / <code>module.exports</code>), simplemente elimina o comenta esa línea del <code>package.json</code>.
+  </p>
+</div>
+
+{/* EJEMPLO DE MÓDULO PROPIO */}
+<div className="grid md:grid-cols-2 gap-4 mt-6">
+  {/* MÓDULO DE CÓDIGO */}
+  <div className="bg-white p-4 rounded-xl shadow">
+    <h4 className="font-semibold mb-2">📄 Archivo: `utilidades.js`</h4>
+    <pre className="overflow-x-auto text-sm"><code>{`// utilidades.js
+// ✅ FORMA MODERNA: EXPORTACIÓN CON ES MODULES
+
+// Exportación nombrada
+export function sumar(a, b) {
   return a + b;
 }
 
-// EXPORTACIÓN: Solo lo que se exporta es visible fuera del archivo
-module.exports = {
-  sumar,
-  PI: 3.14159,
-};`}</code></pre>
-          </div>
+// También podemos exportar constantes o variables
+export const PI = 3.14159;
+`}</code></pre>
+  </div>
 
-          {/* MÓDULO PRINCIPAL */}
-          <div className="bg-white p-4 rounded-xl shadow">
-            <h4 className="font-semibold mb-2">📄 Archivo: `principal.js`</h4>
-            <pre className="overflow-x-auto text-sm"><code>{`// principal.js
-// IMPORTACIÓN: Usar require para traer las funciones
-const { sumar, PI } = require('./utilidades'); // Usa './' para archivos locales
+  {/* MÓDULO PRINCIPAL */}
+  <div className="bg-white p-4 rounded-xl shadow">
+    <h4 className="font-semibold mb-2">📄 Archivo: `principal.js`</h4>
+    <pre className="overflow-x-auto text-sm"><code>{`// principal.js
+// ✅ FORMA MODERNA: IMPORTACIÓN CON ES MODULES
+// Recuerda: en package.json debe aparecer "type": "module"
+
+import { sumar, PI } from './utilidades.js'; // Es obligatorio incluir la extensión .js
 
 const resultado = sumar(10, 5);
 console.log('Suma:', resultado); // Salida: Suma: 15
-console.log('Valor PI:', PI); // Salida: Valor PI: 3.14159`}</code></pre>
-          </div>
-        </div>
+console.log('Valor PI:', PI); // Salida: Valor PI: 3.14159
+`}</code></pre>
+  </div>
+</div>
 
-        <div className="mt-4 bg-accent/10 p-4 rounded-xl border border-accent/20">
-          <h4 className="font-semibold text-accent">Tipos de módulos en Node.js</h4>
-          <ul className="list-disc pl-5 text-secondary/90 space-y-1 mt-2">
-            <li>
-              <strong>Nativos (built-in)</strong>: Módulos que vienen con Node.js y no necesitan instalación. Ej: <code>require('node:http')</code> o <code>require('node:fs')</code>.
-            </li>
-            <li>
-              <strong>Locales</strong>: Archivos que tú mismo creas y usas con una ruta relativa. Ej: <code>require('./utilidades')</code>.
-            </li>
-            <li>
-              <strong>De terceros (Dependencias)</strong>: Módulos instalados por <code>npm</code>. Ej: <code>require('express')</code>.
-            </li>
-          </ul>
-        </div>
       </section>
 
-      {/* PASO 2: INTRODUCCIÓN A NPM */}
-      <section className="rounded-2xl p-6 bg-white shadow border border-light">
-        <h3 className="text-xl font-semibold text-secondary">2) npm y el archivo `package.json`</h3>
-        <p className="mt-2">
-          npm (Node Package Manager) es la herramienta que usaremos para instalar librerías externas. Es el corazón de cualquier proyecto Node.js.
-        </p>
+{/* SECCIÓN: NPM */}
+<section className="rounded-2xl p-6 bg-white shadow border border-light mt-6">
+  <h3 className="text-xl font-semibold text-secondary">2) npm y el archivo `package.json`</h3>
+  <p className="mt-2">
+    npm (Node Package Manager) es la herramienta que usaremos para instalar librerías externas. Es el corazón de cualquier proyecto Node.js.
+  </p>
 
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <div className="bg-light p-4 rounded-xl">
-            <h4 className="font-semibold mb-2">🛠️ Comandos básicos</h4>
-            <ul className="list-disc pl-6 space-y-1 text-secondary/90">
-              <li>
-                <code>npm init -y</code>: Crea el archivo <code>package.json</code> con valores por defecto.
-              </li>
-              <li>
-                <code>npm install express</code>: Instala Express y lo añade como dependencia.
-              </li>
-              <li>
-                <code>npm start</code> o <code>npm run dev</code>: Ejecuta los scripts definidos en `package.json`.
-              </li>
-              <li>
-                <code>npm install</code>: Instala todas las dependencias listadas en `package.json`.
-              </li>
-            </ul>
-          </div>
-          <div className="bg-light p-4 rounded-xl">
-            <h4 className="font-semibold mb-2">📂 La carpeta `node_modules`</h4>
-            <p className="text-secondary/90">
-              Cuando instalas una dependencia (librería), npm la descarga y la guarda en una carpeta llamada <code>node_modules</code>. Esta carpeta puede ser muy grande y nunca se sube a repositorios (por eso usamos el archivo <code>.gitignore</code>). El archivo <code>package.json</code> es lo único que necesitamos para reconstruirla con <code>npm install</code>.
-            </p>
-          </div>
-        </div>
-      </section>
+  <div className="grid md:grid-cols-2 gap-4 mt-4">
+    <div className="bg-light p-4 rounded-xl">
+      <h4 className="font-semibold mb-2">🛠️ Comandos básicos</h4>
+      <ul className="list-disc pl-6 space-y-1 text-secondary/90">
+        <li><code>npm init -y</code>: Crea el archivo <code>package.json</code> con valores por defecto.</li>
+        <li><code>npm install express</code>: Instala Express y lo añade como dependencia.</li>
+        <li><code>npm start</code> o <code>npm run dev</code>: Ejecuta los scripts definidos en `package.json`.</li>
+        <li><code>npm install</code>: Instala todas las dependencias listadas en `package.json`.</li>
+      </ul>
+    </div>
+
+    <div className="bg-light p-4 rounded-xl">
+      <h4 className="font-semibold mb-2">📂 La carpeta `node_modules`</h4>
+      <p className="text-secondary/90">
+        Cuando instalas una dependencia (librería), npm la descarga y la guarda en una carpeta llamada <code>node_modules</code>.  
+        Esta carpeta puede ser muy grande y nunca se sube a repositorios (por eso usamos el archivo <code>.gitignore</code>).  
+        El archivo <code>package.json</code> es lo único que necesitamos para reconstruirla con <code>npm install</code>.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* PASO 3: ANATOMÍA DE package.json */}
       <section className="rounded-2xl p-6 bg-light border border-light">

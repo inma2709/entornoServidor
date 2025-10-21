@@ -163,7 +163,7 @@ server.listen(3000, () => {
           <pre className="bg-white rounded-xl mt-2 p-3 text-sm overflow-auto">
 {`else if (req.url === '/api/usuario') {
   res.writeHead(200);
-  res.end(JSON.stringify({ nombre: 'Inma', rol: 'Docente' }));
+  res.end(JSON.stringify({ nombre: 'Luis', rol: 'Cocinero' }));
 }`}
           </pre>
         </div>
