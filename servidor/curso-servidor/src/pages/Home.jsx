@@ -95,9 +95,7 @@ export default function Home() {
             <h5 className="mt-4 font-semibold text-secondary">Contenidos</h5>
             <ul className="mt-2 list-disc pl-5 space-y-1">
               <li>HTTP , status codes y ciclo petición-respuesta.</li>
-              <li>Express: rutas, controladores y middleware de errores.</li>
-              <li>Validación sencilla (p. ej., <code>express-validator</code> o lógica propia).</li>
-              <li>Gestión de configuración con <code>.env</code>.</li>
+              <li>Express: rutas, controladores y middleware de errores.</li>              
               <li>CRUD en memoria (array/Map) con ids y validaciones.</li>
             </ul>
           </article>
@@ -111,7 +109,7 @@ export default function Home() {
               <li>Implementar un CRUD completo con consultas parametrizadas.</li>
               <li>Manejar errores SQL y devolver códigos/formatos adecuados.</li>
               <li>Diseñar tablas simples con claves primarias y foráneas básicas.</li>
-              <li>Realizar al menos una transacción (BEGIN/COMMIT/ROLLBACK).</li>
+             
             </ul>
             <h5 className="mt-4 font-semibold text-secondary">Contenidos</h5>
             <ul className="mt-2 list-disc pl-5 space-y-1">

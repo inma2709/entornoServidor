@@ -1,16 +1,89 @@
 @import "tailwindcss";   /* 👈 sin esto, no carga Tailwind */
 
 /* Paleta con @theme (v4) */
+html {
+  font-size: 18px; /* Por defecto el navegador usa 16px */
+}
+
+body {
+  font-size: 1.125rem; /* 1.125 × 16px = 18px, o se adapta si cambias el root */
+}
+/* 🎨 Paleta accesible basada en la imagen */
 @theme {
-  --color-primary:  #4059DC; /* azul intenso  */
-  --color-secondary:#6B9AC4; /* azul suave    */
-  --color-accent:   #97D8C4; /* verde agua    */
-  --color-light:    #EFF2F1; /* gris claro    */
-  --color-warning:  #F4B942; /* amarillo miel */
+  --color-primary:   #219EBC; /* Azul medio: principal */
+  --color-secondary: #023047; /* Azul oscuro: cabeceras, textos */
+  --color-accent:    #003249; /* Verde: acento o hover */
+  --color-light:     #caf0f8; /* Azul claro: fondo o bloques suaves */
+  --color-warning:   #FFB703; /* Amarillo: avisos */
   --font-sans: "Poppins", system-ui, sans-serif;
 }
 
-/* Accesibilidad mínima */
+/* 🌈 Contraste y legibilidad */
+body {
+  background-color: var(--color-light);
+  color: var(--color-secondary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  
+}
+
+/* 🧭 Cabecera */
+header, nav {
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+/* 🔘 Botones */
+button, .btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--color-accent);
+}
+
+/* 📢 Avisos o friendly-box */
+.friendly-box {
+  background-color: var(--color-warning);
+  color: var(--color-secondary);
+  padding: 1em;
+  border-radius: 0.75em;
+}
+
+/* 🔗 Enlaces muy visibles y accesibles */
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+  text-underline-offset: 3px; /* separa el subrayado para mayor claridad */
+  transition: all 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-accent);
+  background-color: rgba(255, 183, 3, 0.15); /* resalta visualmente */
+  text-decoration-thickness: 3px; /* más grueso al pasar el ratón */
+  text-underline-offset: 4px;
+}
+
+a:visited {
+  color: #5a189a; /* morado suave, diferencia el enlace visitado */
+}
+
+ul {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+}
+
+
+/* ♿ Accesibilidad */
 :focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 3px;
