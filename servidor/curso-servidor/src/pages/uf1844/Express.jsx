@@ -98,9 +98,71 @@ npm install -D nodemon`}
         </p>
       </section>
 
-      {/* 3) SERVIDOR EXPRESS MÍNIMO */}
+      {/* 4) COMPARATIVA NODE vs EXPRESS */}
+<section className="rounded-2xl p-6 bg-light border border-light mt-6">
+  <h3 className="text-xl font-semibold text-secondary">3) Comparativa: servidor con Node puro vs Express</h3>
+  <p className="mt-2">
+    Observa cómo Express simplifica la creación de un servidor web en comparación con <code>node:http</code>:
+  </p>
+
+  <div className="grid md:grid-cols-2 gap-4 mt-4">
+    {/* Columna izquierda: Node puro */}
+    <div className="bg-white p-4 rounded-xl shadow">
+      <h4 className="font-semibold mb-2">🧠 Con Node.js puro</h4>
+      <pre className="overflow-x-auto text-sm">
+{`import http from "node:http";
+
+// Crear servidor manualmente
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("👋 Hola desde Node.js");
+});
+
+// Escuchar en el puerto 3000
+server.listen(3000, () => {
+  console.log("✅ Servidor Node en http://localhost:3000");
+});`}
+      </pre>
+    </div>
+
+    {/* Columna derecha: Express */}
+    <div className="bg-white p-4 rounded-xl shadow">
+      <h4 className="font-semibold mb-2">⚡ Con Express.js</h4>
+      <pre className="overflow-x-auto text-sm">
+{`const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+  res.send('👋 Hola desde Express');
+});
+
+app.listen(PORT, () => {
+  console.log(\`✅ Servidor Express en http://localhost:\${PORT}\`);
+});`}
+      </pre>
+    </div>
+  </div>
+
+  <div className="mt-4 bg-accent/10 p-4 rounded-xl border border-accent/20">
+    <h4 className="font-semibold text-accent">🔍 Diferencias clave</h4>
+    <ul className="list-disc pl-6 space-y-1 mt-2">
+      <li>Express se basa en Node, pero evita escribir cabeceras y rutas manualmente.</li>
+      <li>Usa métodos como <code>app.get()</code> y <code>res.send()</code> en lugar de <code>createServer()</code>.</li>
+      <li>El código es más corto, legible y escalable.</li>
+    </ul>
+  </div>
+
+  <div className="friendly-box mt-4">
+    💡 <strong>Recuerda:</strong> Express no sustituye a Node, lo usa por debajo.
+    Es como pasar de construir un motor pieza a pieza a conducir un coche listo para usar.
+  </div>
+</section>
+
+
+      {/* 4) SERVIDOR EXPRESS MÍNIMO */}
       <section className="rounded-2xl p-6 bg-light border border-light">
-        <h3 className="text-xl font-semibold text-secondary">3) Servidor Express mínimo</h3>
+        <h3 className="text-xl font-semibold text-secondary">4) Servidor Express mínimo</h3>
         <p className="mt-2">
           Comparado con <code>node:http</code>, Express es más directo y legible:
         </p>
@@ -138,7 +200,7 @@ app.listen(PORT, () => {
         </div>
       </section>
 
-      {/* 4) RUTAS MÚLTIPLES, JSON Y QUERY PARAMS */}
+      {/* 4) RUTAS MÚLTIPLES, JSON Y QUERY PARAMS 
       <section className="rounded-2xl p-6 bg-white shadow border border-light">
         <h3 className="text-xl font-semibold text-secondary">4) Rutas múltiples, JSON y query params</h3>
         <p className="mt-2">
@@ -258,7 +320,7 @@ app.listen(3000, () => console.log('🧩 Middleware en http://localhost:3000'));
         </div>
       </section>
 
-      {/* 7) EJERCICIO DE APLICACIÓN */}
+      {/* 7) EJERCICIO DE APLICACIÓN 
       <section className="rounded-2xl p-6 bg-white shadow border border-light">
         <h3 className="text-xl font-semibold text-secondary">🧩 Ejercicio: Mi primera mini-API Express</h3>
         <ol className="list-decimal pl-6 mt-3 space-y-2">
@@ -282,8 +344,8 @@ app.listen(3000, () => console.log('🧩 Middleware en http://localhost:3000'));
         <ul className="list-disc pl-6 mt-2 space-y-1">
           <li>Qué problemas te ahorra Express frente a <code>node:http</code>.</li>
           <li>Instalar y arrancar un servidor Express con <code>nodemon</code>.</li>
-          <li>Definir rutas GET/POST, enviar JSON y leer <code>req.query</code> y <code>req.body</code>.</li>
-          <li>Registrar <strong>middleware</strong> (logger, <code>express.json()</code>), 404 y errores.</li>
+          <li>Definir rutas GET/POST y  enviar JSON .</li>
+          <li>Registrar <strong>middleware</strong></li>
         </ul>
       </section>
 
